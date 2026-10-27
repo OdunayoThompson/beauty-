@@ -20,7 +20,7 @@
   }
 
   *{ box-sizing: border-box; margin:0; padding:0; }
-  html{ scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
+  html{ scroll-behavior: smooth; overflow-x: hidden; width: 100%; color-scheme: dark; }
   body{
     background: var(--bg);
     color: var(--ivory);
@@ -120,7 +120,9 @@
   }
   .nav-links a:hover{ color: var(--gold-soft); }
   @media (max-width: 760px){
-    .nav-links{ display:none; }
+    nav.wrap{ flex-wrap: wrap; }
+    .nav-links{ gap: 22px; flex-wrap: wrap; letter-spacing: 0.06em; }
+    .nav-links a{ display:inline-flex; align-items:center; min-height:44px; }
   }
   @media (max-width: 400px){
     .logo .brand{ font-size: 15px; }
@@ -252,9 +254,12 @@
 
   /* -------------------- section headers -------------------- */
   #services, #booking, #contact, #bookingForm{ scroll-margin-top: 96px; }
-  .section{ padding: 90px 0; }
-  @media (max-width: 1024px){ .section{ padding: 70px 0; } }
-  @media (max-width: 480px){ .section{ padding: 52px 0; } }
+  @media (max-width:760px){
+    #services, #booking, #contact, #bookingForm{ scroll-margin-top:160px; }
+  }
+  .section{ padding-block: 90px; }
+  @media (max-width: 1024px){ .section{ padding-block: 70px; } }
+  @media (max-width: 480px){ .section{ padding-block: 52px; } }
   .section-head{
     display:flex; align-items: flex-end; justify-content: space-between;
     gap: 30px; margin-bottom: 54px; flex-wrap: wrap;
@@ -381,15 +386,10 @@
     font-size: 20px;
     color: var(--gold-soft);
   }
-  .slip-head .stub{
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ivory-dim);
-    border: 1px solid var(--line);
-    padding: 6px 10px;
-    border-radius: var(--radius);
-  }
+  .slip fieldset{ border:0; min-width:0; }
+  .slip fieldset:disabled{ opacity:0.7; }
+  .slip fieldset:disabled button{ cursor:wait; }
+  .slip-actions a[aria-disabled="true"]{ opacity:0.65; cursor:wait; }
 
   .field{ margin-bottom: 20px; }
   .field label{
@@ -406,13 +406,13 @@
     border: none;
     border-bottom: 1px solid var(--line);
     color: var(--ivory);
-    font-size: 15.5px;
+    font-size: 16px;
     padding: 10px 2px;
     outline: none;
     transition: border-color 0.2s ease;
   }
   .field select option{ background: var(--bg-panel); color: var(--ivory); }
-  .field input::placeholder, .field textarea::placeholder{ color: rgba(205,185,182,0.45); }
+  .field input::placeholder, .field textarea::placeholder{ color: var(--ivory-dim); }
   .field input:focus, .field select:focus, .field textarea:focus{ border-color: var(--gold); }
   .field textarea{ resize: vertical; min-height: 56px; }
 
@@ -434,10 +434,9 @@
     margin-top: 14px;
     font-size: 13px;
     text-align:center;
-    display:none;
+    color:var(--gold-soft);
   }
-  .form-status.ok{ color: var(--gold-soft); display:block; }
-  .form-status.err{ color: var(--rose); display:block; }
+  .form-status:empty{ margin-top:0; }
 
   @media (max-width: 860px){
     .booking-grid{ grid-template-columns: 1fr; }
@@ -456,6 +455,9 @@
     color: var(--gold-soft); margin-bottom: 16px;
   }
   footer p, footer li{ color: var(--ivory-dim); font-size: 14px; }
+  footer a{ overflow-wrap:anywhere; text-underline-offset:3px; }
+  footer a:hover{ text-decoration:underline; }
+  .footer-grid > div{ min-width:0; }
   footer ul{ list-style:none; display:flex; flex-direction: column; gap: 10px; }
   .footer-logo{
     font-family: var(--display); font-size: 22px; margin-bottom: 14px;
@@ -489,27 +491,25 @@
     .wa-float{ padding: 14px; }
   }
 
-  /* reveal on scroll */
-  .reveal{ opacity: 0; transform: translateY(18px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .reveal.in{ opacity: 1; transform: translateY(0); }
-
   @media (prefers-reduced-motion: reduce){
     html{ scroll-behavior: auto; }
-    .reveal{ opacity:1; transform:none; transition:none; }
     .btn, .wa-float{ transition:none; }
   }
 
   /* -------------------- confirmation popup -------------------- */
   .popup-overlay{
     position: fixed; inset: 0; z-index: 100;
-    background: rgba(10,6,14,0.72);
-    backdrop-filter: blur(4px);
-    display: flex; align-items: center; justify-content: center;
+    background: transparent;
+    color:var(--ivory);
+    border:0;
+    width:100%; max-width:none;
+    height:100%; max-height:none;
+    margin:0;
+    display: none; align-items: center; justify-content: center;
     padding: 24px;
-    opacity: 0; pointer-events: none;
-    transition: opacity 0.25s ease;
   }
-  .popup-overlay.show{ opacity: 1; pointer-events: auto; }
+  .popup-overlay[open]{ display:flex; }
+  .popup-overlay::backdrop{ background:rgba(10,6,14,0.72); backdrop-filter:blur(4px); }
   .popup-card{
     position: relative;
     width: 100%; max-width: 400px;
@@ -519,10 +519,9 @@
     box-shadow: var(--shadow);
     padding: 40px 32px 32px;
     text-align: center;
-    transform: translateY(14px) scale(0.98);
-    transition: transform 0.25s ease;
+    max-height:100%; overflow-y:auto;
+    overscroll-behavior:contain;
   }
-  .popup-overlay.show .popup-card{ transform: translateY(0) scale(1); }
   .popup-close{
     position: absolute; top: 14px; right: 16px;
     background: none; color: var(--ivory-dim);

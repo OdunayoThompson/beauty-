@@ -35,8 +35,8 @@
         <a href="#bookingForm" class="btn btn-primary">
           Book an appointment
         </a>
-        <a href="#" id="heroWaBtn" target="_blank" rel="noopener" class="btn btn-ghost">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.5-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10.1 9 9.6 7.7 9.4 7.2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5-1.3c1.4.8 3.1 1.2 5 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.7 0-3.3-.5-4.6-1.3l-.3-.2-3 .8.8-2.9-.2-.3C3.9 15 3.3 13.5 3.3 12c0-4.8 3.9-8.7 8.7-8.7s8.7 3.9 8.7 8.7-3.9 8.7-8.7 8.7z"/></svg>
+        <a href="https://wa.me/2347040621753" id="heroWaBtn" target="_blank" rel="noopener" class="btn btn-ghost">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.5-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10.1 9 9.6 7.7 9.4 7.2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5-1.3c1.4.8 3.1 1.2 5 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.7 0-3.3-.5-4.6-1.3l-.3-.2-3 .8.8-2.9-.2-.3C3.9 15 3.3 13.5 3.3 12c0-4.8 3.9-8.7 8.7-8.7s8.7 3.9 8.7 8.7-3.9 8.7-8.7 8.7z"/></svg>
           Chat on WhatsApp
         </a>
       </div>
@@ -52,7 +52,7 @@
 
 <section id="services" class="section">
   <div class="wrap">
-    <div class="section-head reveal">
+    <div class="section-head">
       <div>
         <span class="tag">The Menu</span>
         <h2>Four ways to begin.</h2>
@@ -60,7 +60,7 @@
       <p>Not sure which one fits? Start with a consultation — it's free, and we'll point you the right way.</p>
     </div>
 
-    <div class="services reveal">
+    <div class="services">
       <div class="service">
         <span class="num">01</span>
         <h3>Hair Making</h3>
@@ -92,7 +92,7 @@
 <section id="booking" class="booking">
   <div class="wrap section">
     <div class="booking-grid">
-      <div class="booking-info reveal">
+      <div class="booking-info">
         <span class="tag">Reserve Your Slot</span>
         <h2>Fill the slip, pick your channel.</h2>
         <p>Send your request straight to the studio, or carry the same details into a WhatsApp chat if you'd rather confirm details there. Either way, nothing's booked until we confirm the time back to you.</p>
@@ -103,31 +103,34 @@
         </ul>
       </div>
 
-      <div class="reveal">
+      <div>
         <form class="slip" id="bookingForm" action="https://formsubmit.co/odunayothompson792@gmail.com" method="POST">
           <!-- FormSubmit target: odunayothompson792@gmail.com -->
-          <input type="hidden" name="_subject" value="New booking request — Jen Esthediks Beauty Studio">
+          <input type="hidden" name="_subject" value="New booking request for Jen Esthediks Beauty Studio">
           <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="false">
+          <div hidden aria-hidden="true">
+            <label for="bookingWebsite">Leave this field empty</label>
+            <input type="text" id="bookingWebsite" name="_honey" tabindex="-1" autocomplete="off">
+          </div>
 
           <div class="slip-head">
             <span class="title">Appointment Slip</span>
-            <span class="stub">No. <span id="slipNo">—</span></span>
           </div>
 
+          <fieldset id="bookingFields" aria-label="Appointment details">
           <div class="field">
             <label for="fname">Full name</label>
-            <input type="text" id="fname" name="Name" placeholder="Your name" required>
+            <input type="text" id="fname" name="Name" placeholder="Your name" autocomplete="name" pattern=".*\S.*" maxlength="120" required>
           </div>
 
           <div class="row-2">
             <div class="field">
               <label for="fphone">Phone / WhatsApp</label>
-              <input type="tel" id="fphone" name="Phone" placeholder="e.g. 0803 000 0000" required>
+              <input type="tel" id="fphone" name="Phone" placeholder="e.g. 0803 000 0000" autocomplete="tel" inputmode="tel" minlength="8" maxlength="32" pattern="\+?[0-9\s\(\).\-]+" required>
             </div>
             <div class="field">
               <label for="femail">Email (optional)</label>
-              <input type="email" id="femail" name="Email" placeholder="you@email.com">
+              <input type="email" id="femail" name="Email" placeholder="you@email.com" autocomplete="email" maxlength="254">
             </div>
           </div>
 
@@ -146,26 +149,29 @@
           <div class="row-2">
             <div class="field">
               <label for="fdate">Preferred date</label>
-              <input type="date" id="fdate" name="Date" required>
+              <input type="date" id="fdate" name="Date" aria-describedby="bookingHours" required>
             </div>
             <div class="field">
-              <label for="ftime">Preferred time</label>
-              <input type="time" id="ftime" name="Time">
+              <label for="ftime">Preferred time, Lagos</label>
+              <input type="time" id="ftime" name="Time" min="08:00" max="20:00" aria-describedby="bookingHours">
             </div>
           </div>
 
           <div class="field">
             <label for="fnotes">Notes (optional)</label>
-            <textarea id="fnotes" name="Notes" placeholder="Reference photo, hair length, anything we should know"></textarea>
+            <textarea id="fnotes" name="Notes" placeholder="Reference photo link, hair length, anything we should know" maxlength="2000"></textarea>
           </div>
+          <p class="slip-note" id="bookingHours">Tuesday to Sunday, 8am to 8pm, Lagos time. The studio will confirm your appointment.</p>
 
           <div class="slip-actions">
             <button type="submit" class="btn btn-primary">Send booking request</button>
-            <a href="#" id="formWaBtn" target="_blank" rel="noopener" class="btn btn-ghost">
-              <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.5-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10.1 9 9.6 7.7 9.4 7.2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5-1.3c1.4.8 3.1 1.2 5 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.7 0-3.3-.5-4.6-1.3l-.3-.2-3 .8.8-2.9-.2-.3C3.9 15 3.3 13.5 3.3 12c0-4.8 3.9-8.7 8.7-8.7s8.7 3.9 8.7 8.7-3.9 8.7-8.7 8.7z"/></svg>
+            <a href="https://wa.me/2347040621753" id="formWaBtn" target="_blank" rel="noopener" class="btn btn-ghost">
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.5-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10.1 9 9.6 7.7 9.4 7.2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5-1.3c1.4.8 3.1 1.2 5 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.7 0-3.3-.5-4.6-1.3l-.3-.2-3 .8.8-2.9-.2-.3C3.9 15 3.3 13.5 3.3 12c0-4.8 3.9-8.7 8.7-8.7s8.7 3.9 8.7 8.7-3.9 8.7-8.7 8.7z"/></svg>
               Continue on WhatsApp instead
             </a>
           </div>
+          </fieldset>
+          <p class="form-status" id="bookingStatus" role="status" aria-live="polite"></p>
           <p class="slip-note">The WhatsApp button carries over whatever you've filled in above.</p>
         </form>
       </div>
@@ -178,21 +184,21 @@
     <div class="footer-grid">
       <div>
         <div class="footer-logo">JEN ESTHEDIKS <em style="color:var(--gold-soft);font-style:italic;">Beauty Studio</em></div>
-        <p>Hair making, cuts, spa, and microblading — by appointment. Replace this address and the studio details below before publishing.</p>
+        <p>Hair making, cuts, spa, and microblading by appointment.</p>
       </div>
       <div>
         <h4>Visit</h4>
         <ul>
-          <li> 32,Ezekiel Bustop,off Toyin Street,Ikeja Lagos</li>
+          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=32%20Ezekiel%20Bus%20Stop%2C%20off%20Toyin%20Street%2C%20Ikeja%2C%20Lagos" target="_blank" rel="noopener">32, Ezekiel Bus Stop, off Toyin Street, Ikeja, Lagos</a></li>
           <li>Tue – Sun, 8am – 8pm</li>
         </ul>
       </div>
       <div>
         <h4>Reach us</h4>
         <ul>
-          <li id="footerPhone">+234 704 062 1753</li>
-          <li>odunayothompson792@gmail.com</li>
-          <li><a href="#" id="footerWaBtn" target="_blank" rel="noopener" style="color:var(--gold-soft);">Message on WhatsApp →</a></li>
+          <li id="footerPhone"><a href="tel:+2347040621753">+234 704 062 1753</a></li>
+          <li><a href="mailto:odunayothompson792@gmail.com">odunayothompson792@gmail.com</a></li>
+          <li><a href="https://wa.me/2347040621753" id="footerWaBtn" target="_blank" rel="noopener" style="color:var(--gold-soft);">Message on WhatsApp →</a></li>
         </ul>
       </div>
     </div>
@@ -203,23 +209,23 @@
   </div>
 </footer>
 
-<a href="#" id="floatWaBtn" class="wa-float" target="_blank" rel="noopener">
-  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.5-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10.1 9 9.6 7.7 9.4 7.2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5-1.3c1.4.8 3.1 1.2 5 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.7 0-3.3-.5-4.6-1.3l-.3-.2-3 .8.8-2.9-.2-.3C3.9 15 3.3 13.5 3.3 12c0-4.8 3.9-8.7 8.7-8.7s8.7 3.9 8.7 8.7-3.9 8.7-8.7 8.7z"/></svg>
+<a href="https://wa.me/2347040621753" id="floatWaBtn" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.5-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10.1 9 9.6 7.7 9.4 7.2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5-1.3c1.4.8 3.1 1.2 5 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.7 0-3.3-.5-4.6-1.3l-.3-.2-3 .8.8-2.9-.2-.3C3.9 15 3.3 13.5 3.3 12c0-4.8 3.9-8.7 8.7-8.7s8.7 3.9 8.7 8.7-3.9 8.7-8.7 8.7z"/></svg>
   <span>WhatsApp us</span>
 </a>
 
-<div class="popup-overlay" id="popupOverlay" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+<dialog class="popup-overlay" id="popupOverlay" aria-labelledby="popupTitle" aria-describedby="popupMessage">
   <div class="popup-card">
     <button type="button" class="popup-close" id="popupClose" aria-label="Close">&times;</button>
     <div class="popup-icon" id="popupIcon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
     </div>
     <div class="bulbs" style="justify-content:center;margin-bottom:14px;"><span></span><span></span><span></span></div>
     <h3 class="popup-title" id="popupTitle">Booking request sent</h3>
-    <p class="popup-message" id="popupMessage">Thank you — we've received your request and will confirm your exact time shortly.</p>
-    <button type="button" class="btn btn-primary" id="popupOk" style="width:100%;justify-content:center;margin-top:24px;">Done</button>
+    <p class="popup-message" id="popupMessage">Your request has been sent. The studio will confirm your exact time shortly.</p>
+    <button type="button" class="btn btn-primary" id="popupOk" autofocus style="width:100%;justify-content:center;margin-top:24px;">Done</button>
   </div>
-</div>
+</dialog>
 
 <script src="script.js"></script>
 
